@@ -2,22 +2,46 @@ import { root } from '../index'
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import { createRoot } from 'react-dom/client'
+import { getAllUserTasks } from '../api/getAllUserTasks'
 
 function UserTasksPage() {
-  //Тут надо сделать запрос на получение списка задач
-  //Если ответ фолз, то очистить токены и отправить на страницу авторизации
+  const [accessToken, setAccessToken] = useState(
+    localStorage.getItem(localStorage.key(0))
+  )
+  const [refreshToken, setRefreshToken] = useState(
+    localStorage.getItem(localStorage.key(1))
+  )
+
+  let [list, setlist] = useState('')
+
+  useEffect(() => {
+    async function get() {
+      let answer = await getAllUserTasks(accessToken, refreshToken)
+      if (answer === 500) {
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('refreshToken')
+        window.location.reload()
+      } else {
+        let listItems = answer.map((obj) => {
+          return (
+            <div key={obj.id}>
+              <p>Название: {obj.title}</p>
+              <p>Описание: {obj.description}</p>
+              <p>Статус: {obj.status}</p>
+              <br></br>
+            </div>
+          )
+        })
+        setlist(listItems)
+      }
+    }
+    get()
+  }, [])
 
   return (
-    <div className="userTasks">
+    <div id="listOfTasks">
       <h1>Список задач пользователя</h1>
-      {/* Надо сделать список задач,
-      где для каждой задачи можно раскрыть больше и увидеть подробную инфу
-      Также у каждой записи списка должны быть кнопки (удалить, изменить, изменить статус) */}
-      <div id="listOfTasks">
-        <li>
-          <ul></ul>
-        </li>
-      </div>
+      {list}
     </div>
   )
 }

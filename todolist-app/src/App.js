@@ -1,6 +1,8 @@
 import './App.css'
+import React, { useEffect, useState } from 'react'
 import renderRegistrationPage from '../src/components/registrationPage'
 import renderLoginPage from '../src/components/loginPage'
+import renderUserTasksPage from './components/userTasksPage'
 
 // function App() {
 //   const [inputLogin, setLogin] = useState('')
@@ -65,27 +67,39 @@ import renderLoginPage from '../src/components/loginPage'
 // }
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Привет</h1>
-      <div>
-        <a
-          onClick={() => {
-            renderRegistrationPage()
-          }}
-        >
-          Регистрация
-        </a>
-        <a
-          onClick={() => {
-            renderLoginPage()
-          }}
-        >
-          Вход
-        </a>
+  const [accessToken, setAccessToken] = useState('')
+  const [refreshToken, setRefreshToken] = useState('')
+
+  useEffect(() => {
+    setAccessToken(localStorage.getItem(localStorage.key(0)))
+    setRefreshToken(localStorage.getItem(localStorage.key(1)))
+  }, [])
+
+  if (accessToken && refreshToken) {
+    return renderUserTasksPage()
+  } else {
+    return (
+      <div className="App">
+        <h1>Привет</h1>
+        <div>
+          <a
+            onClick={() => {
+              renderRegistrationPage()
+            }}
+          >
+            Регистрация
+          </a>
+          <a
+            onClick={() => {
+              renderLoginPage()
+            }}
+          >
+            Вход
+          </a>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default App
