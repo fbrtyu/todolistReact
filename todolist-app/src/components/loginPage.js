@@ -1,8 +1,6 @@
 import { root } from '../index'
 import React, { useEffect, useState } from 'react'
 import { login } from '../api/login'
-import ReactDOM from 'react-dom'
-import { createRoot } from 'react-dom/client'
 import renderRegistrationPage from './registrationPage'
 import renderUserTasksPage from './userTasksPage'
 

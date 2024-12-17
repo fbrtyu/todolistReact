@@ -24,11 +24,11 @@ export async function login(login, password, accessToken, refreshToken) {
 
   let answer = await response.json()
 
-  if(response.status === 500) {
+  if (response.status === 500) {
     renderLoginPage()
   } else {
-    localStorage.setItem('accessToken', answer.accessToken);
-    localStorage.setItem('refreshToken', answer.refreshToken);
+    localStorage.setItem('accessToken', answer.accessToken)
+    localStorage.setItem('refreshToken', answer.refreshToken)
     renderUserTasksPage()
   }
 

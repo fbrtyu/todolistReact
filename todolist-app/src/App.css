@@ -14,6 +14,24 @@ a {
   margin: 5px;
 }
 
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 5px;
+  margin: 5px;
+}
+
+form {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
 /* #signin {
   display: block;
 }

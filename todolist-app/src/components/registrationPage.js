@@ -1,8 +1,6 @@
 import { root } from '../index'
 import React, { useState } from 'react'
 import { registration } from '../api/registration'
-import ReactDOM from 'react-dom'
-import { createRoot } from 'react-dom/client'
 import renderLoginPage from './loginPage'
 
 function RegistrationPage() {
