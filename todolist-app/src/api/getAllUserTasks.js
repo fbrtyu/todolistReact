@@ -14,7 +14,9 @@ export async function getAllUserTasks(accessToken, refreshToken) {
       }),
     }
   )
-
+  if (response.status === 501) {
+    return 501
+  }
   if (response.status === 500) {
     return 500
   } else {

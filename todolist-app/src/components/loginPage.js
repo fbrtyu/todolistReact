@@ -17,7 +17,6 @@ function LoginPage() {
   }, [])
 
   if (accessToken && refreshToken) {
-    console.log(accessToken, refreshToken)
     renderUserTasksPage()
   }
 

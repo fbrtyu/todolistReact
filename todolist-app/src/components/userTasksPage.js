@@ -17,10 +17,14 @@ function UserTasksPage() {
 
   async function getTasks() {
     let answer = await getAllUserTasks(accessToken, refreshToken)
+    if (answer === 501) {
+      console.log('Нет списка задач')
+    }
     if (answer === 500) {
       localStorage.removeItem('accessToken')
       localStorage.removeItem('refreshToken')
       window.location.reload()
+    } else if (answer === 501) {
     } else {
       let listItems = answer.map((obj) => {
         return (

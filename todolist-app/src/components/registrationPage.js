@@ -8,9 +8,9 @@ function RegistrationPage() {
   const [inputPassword_1, setPassword_1] = useState('')
   const [inputPassword_2, setPassword_2] = useState('')
 
-  function signup() {
+  async function signup() {
     if (inputPassword_1 === inputPassword_2 && inputPassword_1 !== '') {
-      registration(inputLogin, inputPassword_1, inputPassword_2)
+      await registration(inputLogin, inputPassword_1, inputPassword_2)
     } else {
       console.log('Пароли не совпадают!')
     }
