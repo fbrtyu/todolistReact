@@ -7,6 +7,8 @@ async function delUser() {
     document.getElementById('login').value,
     document.getElementById('password').value
   )
+  localStorage.removeItem('accessToken')
+  localStorage.removeItem('refreshToken')
   console.log(answer)
 }
 
