@@ -30,6 +30,4 @@ export async function registration(login, password_1, password_2) {
   } else {
     renderRegistrationPage()
   }
-
-  console.log(answer)
 }

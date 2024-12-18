@@ -9,11 +9,12 @@ function RegistrationPage() {
   const [inputPassword_2, setPassword_2] = useState('')
 
   async function signup() {
-    if (inputPassword_1 === inputPassword_2 && inputPassword_1 !== '') {
-      await registration(inputLogin, inputPassword_1, inputPassword_2)
-    } else {
-      console.log('Пароли не совпадают!')
-    }
+    // if (inputPassword_1 === inputPassword_2 && inputPassword_1 !== '') {
+    //   await registration(inputLogin, inputPassword_1, inputPassword_2)
+    // } else {
+    //   console.log('Пароли не совпадают!')
+    // }
+    await registration(inputLogin, inputPassword_1, inputPassword_2)
   }
 
   return (
